@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-dataset_train = pd.read_csv('Google_Stock_Price_Train.csv')
+dataset_train = pd.read_csv('Apple_Stock_Price_Train.csv')
 training_set = dataset_train.iloc[:, 1:2].values
 
 from sklearn.preprocessing import MinMaxScaler
@@ -45,7 +45,7 @@ regressor.fit(X_train, y_train, epochs = 100, batch_size = 32)
 
 
 
-dataset_test = pd.read_csv('Google_Stock_Price_Test.csv')
+dataset_test = pd.read_csv('Apple_Stock_Price_Test.csv')
 real_stock_price = dataset_test.iloc[:, 1:2].values
 
 dataset_total = pd.concat((dataset_train['Open'], dataset_test['Open']), axis = 0)
@@ -60,10 +60,10 @@ X_test = np.reshape(X_test, (X_test.shape[0], X_test.shape[1], 1))
 predicted_stock_price = regressor.predict(X_test)
 predicted_stock_price = sc.inverse_transform(predicted_stock_price)
 
-plt.plot(real_stock_price, color = 'red', label = 'Real Google Stock Price')
-plt.plot(predicted_stock_price, color = 'blue', label = 'Predicted Google Stock Price')
-plt.title('Google Stock Price Prediction')
+plt.plot(real_stock_price, color = 'red', label = 'Real Apple Stock Price')
+plt.plot(predicted_stock_price, color = 'blue', label = 'Predicted Apple Stock Price')
+plt.title('Apple Stock Price Prediction')
 plt.xlabel('Time')
-plt.ylabel('Google Stock Price')
+plt.ylabel('Apple Stock Price')
 plt.legend()
 plt.show()
